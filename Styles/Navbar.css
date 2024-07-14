@@ -1,0 +1,45 @@
+.containerNavbar {
+    display: flex;
+    border-bottom: #000000 solid 1px;
+    flex-direction: column;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    height: auto;
+    font-size: 150%;
+}
+
+.logo {
+    font-size: 200%;
+    margin-left: 1%;
+}
+
+
+
+.link {
+    text-decoration: none;
+    color: #000000;
+    font-size: 115%;
+    margin-left: 5%;
+}
+
+.link:hover {
+    transition: 0.5s;
+    font-size: 115%;
+}
+
+.containerIRC {
+    display: flex;
+    font-size: 80%;
+    justify-content: flex-end;
+    border-bottom: #000000 solid 1px;
+    padding: 1%;
+}
+
+.containerIRC .linkIRC {
+    margin-left: 3%;
+    text-decoration: none;
+    color: #000000;
+}

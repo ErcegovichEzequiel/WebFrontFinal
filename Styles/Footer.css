@@ -1,0 +1,31 @@
+.footer {
+    background-color: black;
+    font-family: "Merriweather", serif;
+    padding: 1%;
+}
+
+.footer h3 {
+    color: white;
+    font-size: 150%;
+}
+
+.boxRedes {
+    display: flex;
+    flex-direction: column;
+}
+
+.iconRedes {
+    width: 3%;
+}
+
+
+
+/* Copi */
+.boxCopi {
+    background-color: rgb(74, 74, 74);
+}
+
+.copi {
+    color: white;
+    text-decoration: none;
+}
