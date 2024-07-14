@@ -3,6 +3,7 @@ import Navbar from '../../Components/Navbar'
 import Footer from '../../Components/Footer'
 import '../../Styles/Global.css'
 import '../../Styles/Desarrollador.css'
+import '../../Styles/Desarrollador.css'
 import { getAllUsers, deleteUserById, updateUserById } from '../../src/fetching/auth.fetching';
 
 const UsuarioDesarrollador = () => {
@@ -83,14 +84,18 @@ const UsuarioDesarrollador = () => {
             </div>
             <div>
                 <h3>Eliminar Usuario</h3>
+                <label htmlFor="ID">ID</label>
                 <input type="text" value={userIdToDelete} onChange={handleChangeUserIdToDelete} placeholder="ID del usuario a eliminar" />
                 <button onClick={handleEliminarUsuario}>Eliminar</button>
                 {deleteMessage && <p>{deleteMessage}</p>}
             </div>
             <div>
                 <h3>Editar Usuario</h3>
+                <label htmlFor="ID">ID</label>
                 <input type="text" placeholder='ID del usuario' onChange={(e) => setUserIdToUpdate(e.target.value)} />
+                <label htmlFor="email">Email</label>
                 <input type="text" placeholder='Nuevo email del usuario' onChange={(e) => setUserDataToUpdate({ ...userDataToUpdate, email: e.target.value })} />
+                <label htmlFor="password">Password</label>
                 <input type="text" placeholder='Nueva password del usuario' onChange={(e) => setUserDataToUpdate({ ...userDataToUpdate, password: e.target.value })} />
                 <button onClick={handleActualizarUsuario}>Editar</button>
                 {updateMessage && <p>{updateMessage}</p>}

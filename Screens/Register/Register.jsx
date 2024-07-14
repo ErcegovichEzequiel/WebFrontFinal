@@ -14,12 +14,8 @@ const Registrate = () => {
       event.preventDefault()
       
       const usuario = { 
-        nombre: event.target.nombre.value, 
-        apellido: event.target.apellido.value,
-        edad: event.target.edad.value,
         email: event.target.email.value,
         password: event.target.password.value,
-        passwordConfirm: event.target.passwordConfirm.value
       }
       await register(usuario) 
       setErrorText('') 
@@ -38,18 +34,6 @@ const Registrate = () => {
           <h3 className='titleRegistro'>Registrate</h3>
           <form action="" className='containerFormIS' onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="nombre">Nombre</label>
-              <input type="text" id="nombre" name="nombre" placeholder='Ezequiel' className='inputIS'  />
-            </div>
-            <div>
-              <label htmlFor="apellido">Apellido"</label>
-              <input type="text" id="apellido" name="apellido" placeholder='Gonzalez' className='inputIS'  />
-            </div>
-            <div>
-              <label htmlFor="edad">Edad</label>
-              <input type='numbre' id="edad" name="edad" placeholder='20' className='inputIS'  />
-            </div>
-            <div>
               <label htmlFor="email">Email</label>
               <input type="email" id="email" name="email" placeholder='H&S@gmail.com' className='inputIS'  />
             </div>
@@ -57,11 +41,6 @@ const Registrate = () => {
               <label htmlFor="password">Contraseña</label>
               <input type="password" id="password" name="password" className="inputIS" placeholder="**********"  />
             </div>
-            <div>
-              <label htmlFor="passwordConfirm">Confirmar contraseña</label>
-              <input type="password" id="passwordConfirm" name="passwordConfirm" className="inputIS" placeholder="**********"  />
-            </div>
-
             {errorText
               &&
               <span style={{ color: 'red' }}>

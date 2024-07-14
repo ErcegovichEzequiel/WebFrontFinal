@@ -32,8 +32,9 @@ export const getProductById = async (pid) => {
 export const createProduct = async (productData) => {
   try {
     const response = await HTTP.POST(URL.URL_API + ROUTE + '/createProduct', productData);
+    console.log('Respuesta del servidor en createProduct:', response); // Log para verificar datos
     if (response) {
-      return response
+      return response;
     }
     throw new Error("No se pudo crear el producto");
   } catch (error) {

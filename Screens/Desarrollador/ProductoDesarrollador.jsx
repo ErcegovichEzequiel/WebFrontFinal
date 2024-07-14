@@ -3,6 +3,7 @@ import Navbar from '../../Components/Navbar'
 import Footer from '../../Components/Footer'
 import '../../Styles/Global.css'
 import '../../Styles/Desarrollador.css'
+import '../../Styles/Desarrollador.css'
 import { getProducts, createProduct, updateProduct, deleteProduct } from '../../src/fetching/products.fetching';
 
 
@@ -10,6 +11,57 @@ const ProductoDesarrollador = () => {
     const [products, setProducts] = useState([]);
     const [newProduct, setNewProduct] = useState({ titulo: '', descripcion: '', precio: 0, stock: 0 });
     const [editProduct, setEditProduct] = useState({ pid: '', titulo: '', descripcion: '', precio: 0, stock: 0 });
+    const [eliminarProducto, setEliminarProducto] = useState({ pid: '' });
+
+    const handleDeleteProduct = async () => {
+        try {
+            const response = await deleteProduct(eliminarProducto.pid);
+            if (response) {
+                const updatedProducts = products.filter((product) => product._id !== eliminarProducto.pid);
+                setEliminarProducto(updatedProducts);
+                setEditProduct({ pid: '', titulo: '', descripcion: '', precio: 0, stock: 0 });
+            } else {
+                throw new Error(response.message || "Error al eliminar el producto");
+            }
+        } catch (error) {
+            console.error('Error en handleDeleteProduct:', error.message);
+        }
+    }
+
+    const handleEditProduct = async () => {
+        try {
+            const response = await updateProduct(editProduct.pid, editProduct);
+            if (response) {
+                const updatedProducts = products.map((product) => {
+                    if (product._id === editProduct.pid) {
+                        return { ...product, ...editProduct };
+                    }
+                    return product;
+                });
+                setProducts(updatedProducts);
+                setEditProduct({ pid: '', titulo: '', descripcion: '', precio: 0, stock: 0 });
+            } else {
+                throw new Error(response.message || "Error al modificar el producto");
+            }
+        } catch (error) {
+            console.error('Error en handleEditProduct:', error.message);
+        }
+    };
+
+
+    const handleCreateProduct = async () => {
+        try {
+            const response = await createProduct(newProduct);
+            if (response && response._id) {
+                setProducts([...products, response]);
+                setNewProduct({ titulo: '', descripcion: '', precio: 0, stock: 0 });
+            } else {
+                throw new Error(response.message || "Error al crear el producto");
+            }
+        } catch (error) {
+            console.error('Error en handleCreateProduct:', error.message);
+        }
+    };
 
     const handleGetProducts = async () => {
         try {
@@ -49,65 +101,93 @@ const ProductoDesarrollador = () => {
                         )}
                     </ul>
                 </div>
+
+                <div>
+                    <h3>Añadir un nuevo producto</h3>
+                    <label>Titulo</label>
+                    <input
+                        type="text"
+                        value={newProduct.titulo}
+                        onChange={(e) => setNewProduct({ ...newProduct, titulo: e.target.value })}
+                    />
+                    <label>Descripción</label>
+                    <input
+                        type="text"
+                        value={newProduct.descripcion}
+                        onChange={(e) => setNewProduct({ ...newProduct, descripcion: e.target.value })}
+                    />
+                    <label>Precio</label>
+                    <input
+                        type="number"
+                        value={newProduct.precio}
+                        onChange={(e) => setNewProduct({ ...newProduct, precio: parseFloat(e.target.value) })}
+                    />
+                    <label>Stock</label>
+                    <input
+                        type="number"
+                        value={newProduct.stock}
+                        onChange={(e) => setNewProduct({ ...newProduct, stock: parseInt(e.target.value, 10) })}
+                    />
+                    <button onClick={handleCreateProduct}>Añadir</button>
+                </div>
+
+                <div>
+                    <h3>Editar un producto</h3>
+                    <label htmlFor="pid">ID</label>
+                    <input
+                        type="text"
+                        id="pid"
+                        value={editProduct.pid}
+                        onChange={(e) => setEditProduct({ ...editProduct, pid: e.target.value })}
+                    />
+                    <label htmlFor="title">Título</label>
+                    <input
+                        type="text"
+                        id="title"
+                        value={editProduct.titulo}
+                        onChange={(e) => setEditProduct({ ...editProduct, titulo: e.target.value })}
+                    />
+                    <label htmlFor="description">Descripción</label>
+                    <input
+                        type="text"
+                        id="description"
+                        value={editProduct.descripcion}
+                        onChange={(e) => setEditProduct({ ...editProduct, descripcion: e.target.value })}
+                    />
+                    <label htmlFor="price">Precio</label>
+                    <input
+                        type="number"
+                        id="price"
+                        value={editProduct.precio}
+                        onChange={(e) => setEditProduct({ ...editProduct, precio: parseFloat(e.target.value) })}
+                    />
+                    <label htmlFor="stock">Stock</label>
+                    <input
+                        type="number"
+                        id="stock"
+                        value={editProduct.stock}
+                        onChange={(e) => setEditProduct({ ...editProduct, stock: parseInt(e.target.value, 10) })}
+                    />
+                    <button onClick={handleEditProduct}>Editar</button>
+                </div>
+
+                <div>
+                    <h3>Eliminar un producto</h3>
+                    <label htmlFor="pid">ID</label>
+                    <input
+                        type="text"
+                        id="pid"
+                        value={deleteProduct.pid}
+                        onChange={(e) => setEliminarProducto({ ...eliminarProducto, pid: e.target.value })}
+                    />
+                    <button onClick={handleDeleteProduct}>Eliminar</button>
+                </div>
+
+
             </div>
             <Footer />
         </>
     );
-};
+}
 
 export default ProductoDesarrollador;
-
-
-
-
-
-
-
-// const ProductoDesarrollador = () => {
-//     const [products, setProducts] = useState([]);
-//     const [newProduct, setNewProduct] = useState({ titulo: '', descripcion: '', precio: 0, stock: 0 });
-//     const [editProduct, setEditProduct] = useState({ pid: '', titulo: '', descripcion: '', precio: 0, stock: 0 });
-
-//     const handleGetProducts = async () => {
-//         try {
-//             const productsData = await getProducts();
-//             if (productsData) {
-//                 setProducts(productsData);
-//             }
-//         }
-//         catch (error) {
-//             console.error('Error al obtener los productos:', error);
-//         }
-//     };
-
-//     return (
-//         <>
-//             <Navbar />
-//             <div>
-//                 <h1>Panel de Administración de Usuarios</h1>
-//                 <div>
-//                     <h3>Productos</h3>
-//                     <button onClick={handleGetProducts}>Buscar</button>
-//                     <ul>
-//                         {products && products.length > 0 ? (
-//                             products.map((producto) => (
-//                                 <li key={producto.pid}>
-//                                     <p>ID del Usuario: </p>{producto.pid}
-//                                     <p>Titulo: </p>{producto.titulo}
-//                                     <p>Descripción: </p>{producto.descripcion}
-//                                     <p>Precio: </p>{producto.precio}
-//                                     <p>Stock: </p>{producto.stock}
-//                                 </li>
-//                             ))
-//                         ) : (
-//                             <li>No hay usuarios disponibles</li>
-//                         )}
-//                     </ul>
-//                 </div>
-//             </div>
-//             <Footer />
-//         </>
-//     );
-// };
-
-// export default ProductoDesarrollador;
