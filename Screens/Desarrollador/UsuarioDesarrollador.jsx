@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import Navbar from '../../Components/Navbar'
+import Footer from '../../Components/Footer'
+import '../../Styles/Global.css'
+import '../../Styles/Desarrollador.css'
 import { getAllUsers, deleteUserById, updateUserById } from '../../src/fetching/auth.fetching';
 
 const UsuarioDesarrollador = () => {
@@ -21,7 +25,7 @@ const UsuarioDesarrollador = () => {
             console.error('Error en handleActualizarUsuario:', error.message);
             setUpdateMessage(`Error al actualizar usuario con ID ${userIdToUpdate}: ${error.message}`);
         }
-    };  
+    };
 
     const handleBuscarUsuarios = async () => {
         try {
@@ -52,15 +56,16 @@ const UsuarioDesarrollador = () => {
         }
     };
 
-    const handleChangeUserIdToDelete = (event) => {
-        setUserIdToDelete(event.target.value);
+    const handleChangeUserIdToDelete = (e) => {
+        setUserIdToDelete(e.target.value);
     };
 
-    return (
+    return (<>
+        <Navbar />
         <div>
             <h1>Panel de Administración de Usuarios</h1>
             <div>
-                <h3>USUARIOS</h3>
+                <h3>Usuarios</h3>
                 <button onClick={handleBuscarUsuarios}>BUSCAR</button>
                 <ul>
                     {usuarios && usuarios.length > 0 ? (
@@ -68,7 +73,7 @@ const UsuarioDesarrollador = () => {
                             <li key={usuario._id}>
                                 <p>ID del Usuario: </p>{usuario._id}
                                 <p>Email del Usuario:</p> {usuario.email}
-                                <p>Password del Usuario: </p> {usuario.password} {/* Ajusta según la estructura de tus datos */}
+                                <p>Password del Usuario: </p> {usuario.password} 
                             </li>
                         ))
                     ) : (
@@ -84,14 +89,15 @@ const UsuarioDesarrollador = () => {
             </div>
             <div>
                 <h3>Editar Usuario</h3>
-                <input type="text" placeholder='ID del usuario' onChange={(event) => setUserIdToUpdate(event.target.value)} />
-                <input type="text" placeholder='Nuevo email del usuario' onChange={(event) => setUserDataToUpdate({ ...userDataToUpdate, email: event.target.value })} />
-                <input type="text" placeholder='Nueva password del usuario'  onChange={(event) => setUserDataToUpdate({ ...userDataToUpdate, password: event.target.value })}/>
+                <input type="text" placeholder='ID del usuario' onChange={(e) => setUserIdToUpdate(e.target.value)} />
+                <input type="text" placeholder='Nuevo email del usuario' onChange={(e) => setUserDataToUpdate({ ...userDataToUpdate, email: e.target.value })} />
+                <input type="text" placeholder='Nueva password del usuario' onChange={(e) => setUserDataToUpdate({ ...userDataToUpdate, password: e.target.value })} />
                 <button onClick={handleActualizarUsuario}>Editar</button>
                 {updateMessage && <p>{updateMessage}</p>}
-                
             </div>
         </div>
+        <Footer />
+    </>
     );
 };
 

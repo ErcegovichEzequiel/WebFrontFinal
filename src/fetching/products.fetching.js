@@ -2,69 +2,69 @@ import { HTTP, URL } from "./http"
 
 const ROUTE = '/api/products'
 
-const getProducts = async () => {
+export const getProducts = async () => {
   try {
-    const response = await HTTP.GET(URL.URL_API + ROUTE);
-    if (!response || !response.result || !response.result.productos) {
-      throw new Error("La respuesta no contiene productos");
+    const response = await HTTP.GET(URL.URL_API + ROUTE + '/');
+    console.log(response)
+    if (response.result.productos) {
+      return response.result.productos;
     }
-    return response.result.productos;
+    throw new Error(response.message || "Error al buscar todos los productos");
   } catch (error) {
     console.error("Error en getProducts:", error);
-    throw error;
+    throw { message: error.message };
   }
 };
 
-const getProductById = async (pid) => {
+export const getProductById = async (pid) => {
   try {
     const response = await HTTP.GET(URL.URL_API + ROUTE + '/' + pid);
-    if (!response || !response.result || !response.result.producto) {
-      throw new Error("La respuesta no contiene el producto");
+    if (response) {
+      return response;
     }
-    return response.result.producto;
+    throw new Error(response.message || "Error al buscar el producto");
   } catch (error) {
     console.error("Error en getProductById:", error);
-    throw error;
+    throw { message: error.message };
   }
 };
 
-const createProduct = async (productData) => {
+export const createProduct = async (productData) => {
   try {
-    const response = await HTTP.POST(URL.URL_API + ROUTE, productData);
-    if (!response || !response.result || !response.result.producto) {
-      throw new Error("No se pudo crear el producto");
+    const response = await HTTP.POST(URL.URL_API + ROUTE + '/createProduct', productData);
+    if (response) {
+      return response
     }
-    return response.result.producto;
+    throw new Error("No se pudo crear el producto");
   } catch (error) {
     console.error("Error en createProduct:", error);
-    throw error;
+    throw { message: error.message };
   }
 };
 
-const updateProduct = async (pid, productData) => {
+export const updateProduct = async (pid, productData) => {
   try {
     const response = await HTTP.PUT(URL.URL_API + ROUTE + '/' + pid, productData);
-    if (!response || !response.result || !response.result.producto) {
-      throw new Error("No se pudo modificar el producto");
+    if (response) {
+      return response
     }
-    return response.result.producto;
+    throw new Error("No se pudo modificar el producto");
   } catch (error) {
     console.error("Error en updateProduct:", error);
-    throw error;
+    throw { message: error.message };
   }
 };
 
-const deleteProduct = async (pid) => {
+export const deleteProduct = async (pid) => {
   try {
     const response = await HTTP.DELETE(URL.URL_API + ROUTE + '/' + pid);
-    if (!response || !response.result || !response.result.message !== 'Producto eliminado') {
-      throw new Error("No se pudo eliminar el producto");
+    if (response) {
+      return response
     }
-    return response.result.message;
+    throw new Error("No se pudo eliminar el producto");
   } catch (error) {
     console.error("Error en deleteProduct:", error);
-    throw error;
+    throw { message: error.message };
   }
 };
 
-export { getProducts, getProductById, createProduct, updateProduct, deleteProduct };

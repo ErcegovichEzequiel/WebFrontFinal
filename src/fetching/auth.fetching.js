@@ -13,8 +13,7 @@ export const login = async (usuario) => {
     } catch (error) {
         throw { message: error.message };
     }
-};
-
+}
 export const register = async (usuario) => {
     try {
         const data = await HTTP.POST(URL.URL_API + ROUTE + '/register', usuario);
@@ -27,10 +26,10 @@ export const register = async (usuario) => {
         throw { message: error.message };
     }
 }
-
 export const getAllUsers = async () => {
     try {
-        const response = await HTTP.GET(URL.URL_API + ROUTE + '/users');
+        const token = localStorage.getItem('token');
+        const response = await HTTP.GET(URL.URL_API + ROUTE + '/users', { token });
         if (response) {
             return response;
         }
