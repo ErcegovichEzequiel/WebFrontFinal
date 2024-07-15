@@ -45,7 +45,7 @@ const UsuarioDesarrollador = () => {
             const response = await deleteUserById(userIdToDelete);
             if (response) {
                 setDeleteMessage(`Usuario con ID ${userIdToDelete} eliminado correctamente.`);
-                // Luego de eliminar, actualizamos la lista de usuarios para reflejar el cambio
+  
                 handleBuscarUsuarios();
             } else {
                 throw new Error(response.message || "Error al eliminar usuario");
@@ -63,11 +63,11 @@ const UsuarioDesarrollador = () => {
 
     return (<>
         <Navbar />
-        <div>
+        <div className='containerDesarrollador'>
             <h1>Panel de Administración de Usuarios</h1>
-            <div>
+            <div className='cartaDesarrollador'>
                 <h3>Usuarios</h3>
-                <button onClick={handleBuscarUsuarios}>BUSCAR</button>
+                <button onClick={handleBuscarUsuarios}>Buscar</button>
                 <ul>
                     {usuarios && usuarios.length > 0 ? (
                         usuarios.map((usuario) => (
@@ -75,31 +75,35 @@ const UsuarioDesarrollador = () => {
                                 <p>ID del Usuario: </p>{usuario._id}
                                 <p>Email del Usuario:</p> {usuario.email}
                                 <p>Password del Usuario: </p> {usuario.password} 
+                                <hr />
                             </li>
                         ))
                     ) : (
-                        <li>No hay usuarios disponibles</li>
+                        <p>No hay usuarios disponibles</p>
                     )}
                 </ul>
             </div>
-            <div>
+
+            <div className='cartaDesarrollador'>
                 <h3>Eliminar Usuario</h3>
                 <label htmlFor="ID">ID</label>
                 <input type="text" value={userIdToDelete} onChange={handleChangeUserIdToDelete} placeholder="ID del usuario a eliminar" />
                 <button onClick={handleEliminarUsuario}>Eliminar</button>
                 {deleteMessage && <p>{deleteMessage}</p>}
             </div>
-            <div>
+
+            <div className='cartaDesarrollador'>
                 <h3>Editar Usuario</h3>
                 <label htmlFor="ID">ID</label>
                 <input type="text" placeholder='ID del usuario' onChange={(e) => setUserIdToUpdate(e.target.value)} />
                 <label htmlFor="email">Email</label>
-                <input type="text" placeholder='Nuevo email del usuario' onChange={(e) => setUserDataToUpdate({ ...userDataToUpdate, email: e.target.value })} />
+                <input type="email" placeholder='Nuevo email del usuario' onChange={(e) => setUserDataToUpdate({ ...userDataToUpdate, email: e.target.value })} />
                 <label htmlFor="password">Password</label>
-                <input type="text" placeholder='Nueva password del usuario' onChange={(e) => setUserDataToUpdate({ ...userDataToUpdate, password: e.target.value })} />
+                <input type="password" placeholder='Nueva password del usuario' onChange={(e) => setUserDataToUpdate({ ...userDataToUpdate, password: e.target.value })} />
                 <button onClick={handleActualizarUsuario}>Editar</button>
                 {updateMessage && <p>{updateMessage}</p>}
             </div>
+
         </div>
         <Footer />
     </>
