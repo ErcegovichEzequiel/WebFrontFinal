@@ -23,7 +23,6 @@ const Tienda = () => {
         console.error('Error fetching products:', error);
       }
     };
-
     fetchProducts();
   }, []);
 
@@ -46,7 +45,7 @@ const Tienda = () => {
     setCart(prevCart => ({
       ...prevCart,
       [productId]: quantity
-    })); // Actualiza el estado del carrito con la nueva cantidad
+    })); 
   };
 
   return (

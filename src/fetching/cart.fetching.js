@@ -6,11 +6,10 @@ const ROUTE = '/api/carts'
 export const getCartItems = async () => {
     try {
         const response = await HTTP.GET(URL.URL_API + ROUTE + '/')
-        console.log(response)
-        if (response.result && response.result.items) {
-            return response.result.items
+        if (response.carrito.items) {
+            return response.carrito.items
         }
-        throw new Error("No contiene productos en el carrito")
+        throw new Error("No contiene productos el carrito")
     } catch (error) {
         console.error("Error en getCartItems:", error)
         throw { message: error.message }
@@ -32,72 +31,19 @@ export const addToCart = async (product_id, cantidad) => {
     }
 }
 
-export const deleteCartItem = async (productId) => {
+export const deleteCartItem = async (product_Id) => {
     try {
-        const response = await HTTP.DELETE(UURL.URL_API + ROUTE + '/' + productId)
-        if (!response || !response.result || response.result.message !== 'Producto eliminado del carrito') {
-            throw new Error("No se pudo eliminar el producto del carrito")
+        const response = await HTTP.DELETE(URL.URL_API + ROUTE + '/' + product_Id)
+        console.log('crack', response.carrito.items)
+        if (response.carrito.items) {
+            return response.carrito.items
         }
-        return response.result.message
+        throw new Error("No se pudo eliminar el producto del carrito")
+        
     } catch (error) {
         console.error("Error en deleteCartItem:", error)
-        throw { message: error.message } // Consistencia en el formato del error
+        throw { message: error.message } 
     }
 }
 
-export const checkout = async () => {
-    try {
-        const response = await HTTP.DELETE(URL.URL_API + ROUTE)
-        if (!response || !response.result || response.result.message !== 'Carrito vaciado') {
-            throw new Error("No se pudo vaciar el carrito")
-        }
-        return response.result.message
-    } catch (error) {
-        console.error("Error en checkout:", error)
-        throw { message: error.message } // Consistencia en el formato del error
-    }
-}
-
-
-
-// export const getCartItems = async () => {
-//     try {
-//         const response = await HTTP.GET(URL.URL_API + ROUTE + '/')
-//         console.log(response)
-//         if (response.result.items) {
-//             return response.result.items
-//         }
-//         throw new Error("La respuesta no contiene productos en el carrito")
-//     } catch (error) {
-//         console.error("Error en getCartItems:", error)
-//         throw { message: error.message }
-//     }
-// }
-
-
-//  export const deleteCartItem = async (productId) => {
-//     try {
-//         const response = await HTTP.DELETE(URL.URL_API + `${ROUTE}/${productId}`)
-//         if (!response || !response.result || response.result.message !== 'Producto eliminado del carrito') {
-//             throw new Error("No se pudo eliminar el producto del carrito")
-//         }
-//         return response.result.message
-//     } catch (error) {
-//         console.error("Error en deleteCartItem:", error)
-//         throw error
-//     }
-// }
-
-// export const checkout = async () => {
-//     try {
-//         const response = await HTTP.DELETE(URL.URL_API + ROUTE)
-//         if (!response || !response.result || response.result.message !== 'Carrito vaciado') {
-//             throw new Error("No se pudo vaciar el carrito")
-//         }
-//         return response.result.message
-//     } catch (error) {
-//         console.error("Error en checkout:", error)
-//         throw error
-//     }
-// }
 
