@@ -31,6 +31,7 @@ const UsuarioDesarrollador = () => {
     const handleBuscarUsuarios = async () => {
         try {
             const response = await getAllUsers();
+            console.log(response)
             if (response.result.usuarios) {
                 setUsuarios(response.result.usuarios);
             } else {

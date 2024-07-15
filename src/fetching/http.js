@@ -1,19 +1,29 @@
 export const HTTP = {
-    GET: async (url, headers = { 'Content-Type': 'application/json' }) => {
-        try {
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: headers
-            });
-            if (!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`);
+    // GET: async (url, headers = { 'Content-Type': 'application/json' }) => {
+    //     try {
+    //         const response = await fetch(url, {
+    //             method: 'GET',
+    //             headers: headers
+    //         });
+    //         if (!response.ok) {
+    //             throw new Error(`Error HTTP: ${response.status}`);
+    //         }
+    //         return response.json();
+    //     }
+    //     catch (error) {
+    //         console.error("Error en HTTP GET:", error);
+    //         throw error;
+    //     }
+    // },
+    GET: async (url, headers) => {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
             }
-            return response.json();
-        }
-        catch (error) {
-            console.error("Error en HTTP GET:", error);
-            throw error;
-        }
+        })
+        return response.json()
     },
     POST: async (url, body) => {
         const response = await fetch(url, {
@@ -32,7 +42,7 @@ export const HTTP = {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')                    
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
                 },
                 body: JSON.stringify(body)
             });

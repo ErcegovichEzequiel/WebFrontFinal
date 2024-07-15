@@ -2,18 +2,32 @@ import { HTTP, URL } from "./http"
 
 const ROUTE = '/api/auth'
 
+// export const login = async (usuario) => {
+//     try {
+//         const result = await HTTP.POST(URL.URL_API + ROUTE + '/login', usuario);
+//         console.log(result)
+//         if (!result.ok) {
+//             throw result;
+//         } else {
+//             localStorage.setItem('token', result.token);
+//         }
+//     } catch (error) {
+//         throw { message: error.message };
+//     }
+// }
 export const login = async (usuario) => {
     try {
         const result = await HTTP.POST(URL.URL_API + ROUTE + '/login', usuario);
-        if (!result.ok) {
-            throw result;
-        } else {
-            localStorage.setItem('token', result.token);
+        if (!result.token) {
+            throw new Error("No se recibió un token válido del servidor");
         }
+        localStorage.setItem('token', result.token);
+        return result; // Devuelve la respuesta completa por si necesitas más datos del servidor
     } catch (error) {
         throw { message: error.message };
     }
 }
+
 export const register = async (usuario) => {
     try {
         const data = await HTTP.POST(URL.URL_API + ROUTE + '/register', usuario);
@@ -28,8 +42,7 @@ export const register = async (usuario) => {
 }
 export const getAllUsers = async () => {
     try {
-        const token = localStorage.getItem('token');
-        const response = await HTTP.GET(URL.URL_API + ROUTE + '/users', { token });
+        const response = await HTTP.GET(URL.URL_API + ROUTE + '/users');
         if (response) {
             return response;
         }
