@@ -2,19 +2,6 @@ import { HTTP, URL } from "./http"
 
 const ROUTE = '/api/auth'
 
-// export const login = async (usuario) => {
-//     try {
-//         const result = await HTTP.POST(URL.URL_API + ROUTE + '/login', usuario);
-//         console.log(result)
-//         if (!result.ok) {
-//             throw result;
-//         } else {
-//             localStorage.setItem('token', result.token);
-//         }
-//     } catch (error) {
-//         throw { message: error.message };
-//     }
-// }
 export const login = async (usuario) => {
     try {
         const result = await HTTP.POST(URL.URL_API + ROUTE + '/login', usuario);

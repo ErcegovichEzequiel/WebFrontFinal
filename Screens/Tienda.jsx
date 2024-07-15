@@ -1,101 +1,101 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from '../Components/Navbar';
-import Footer from '../Components/Footer';
+import React, { useEffect, useState } from 'react';
+import Navbar from '../Components/Navbar'
+import Footer from '../Components/Footer'
 import { getProducts } from '../src/fetching/products.fetching';
 import { addToCart } from '../src/fetching/cart.fetching';
-// import { verificarToken } from '../src/fetching/auth.fetching';
-
-
 
 const Tienda = () => {
   const [products, setProducts] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [cart, setCart] = useState({});
+
+  const isAuthenticated = !!localStorage.getItem('token');
 
   useEffect(() => {
-    const checkLoginStatus = async () => {
-      try {
-          // await verificarToken();
-          setLoggedIn(true);
-      } catch (error) {
-          console.error('Error al verificar token:', error.message);
-          setLoggedIn(false);
-      }
-  };
-
     const fetchProducts = async () => {
       try {
-        const productos = await getProducts();
-        setProducts(productos);
+        const productsData = await getProducts();
+        setProducts(productsData);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
     };
 
-    checkLoginStatus();
     fetchProducts();
   }, []);
 
-  const handleAddToCart = async (product, cantidad) => {
-    if (!loggedIn) {
-      alert('Por favor, inicie sesión para comprar.');
-      return;
-    }
-
+  const handleAddToCart = async (productId, quantity) => {
     try {
-      await addToCart({ product, cantidad });
-      alert('Producto agregado al carrito');
+      const response = await addToCart(productId, quantity);
+      if (response) {
+        alert('Producto agregado al carrito');
+        setCart(response);
+      } else {
+        alert('No se pudo agregar el producto al carrito');
+        throw new Error(response.message || 'Error adding product to cart');
+      }      
     } catch (error) {
-      console.error('Error adding to cart:', error);
-      alert('Error al agregar el producto al carrito');
+      console.error('Error adding product to cart:', error);      
     }
+  };
+
+  const handleQuantityChange = (productId, quantity) => {
+    setCart(prevCart => ({
+      ...prevCart,
+      [productId]: quantity
+    })); // Actualiza el estado del carrito con la nueva cantidad
   };
 
   return (
     <>
       <Navbar />
       <div>
-        <h1>Tienda</h1>
-        <div>
-          {products.map(product => (
-            <div key={product._id}>
-              <h2>{product.nombre}</h2>
-              <p>{product.descripcion}</p>
-              <p>Precio: ${product.precio}</p>
-              <p>Stock: {product.stock}</p>
-              <Counter stock={product.stock} onAddToCart={(cantidad) => handleAddToCart(product, cantidad)} />
-            </div>
-          ))}
-        </div>
+        {products.map(product => (
+          <div key={product._id}>
+            <h3>{product.titulo}</h3>
+            <p>{product.descripcion}</p>
+            <p>Precio: ${product.precio}</p>
+            <p>Stock: {product.stock}</p>
+            {isAuthenticated && (
+              <>
+                <button
+                  onClick={() =>
+                    handleQuantityChange(
+                      product._id,
+                      (cart[product._id] || 0) - 1
+                    )
+                  }
+                  disabled={cart[product._id] <= 0}
+                >
+                  -
+                </button>
+                <span>{cart[product._id] || 0}</span>
+                <button
+                  onClick={() =>
+                    handleQuantityChange(
+                      product._id,
+                      (cart[product._id] || 0) + 1
+                    )
+                  }
+                  disabled={cart[product._id] >= product.stock}
+                >
+                  +
+                </button>
+                <button
+                  onClick={() =>
+                    handleAddToCart(product._id, cart[product._id] || 1)
+                  }
+                  disabled={cart[product._id] <= 0}
+                >
+                  Agregar al carrito
+                </button>
+              </>
+            )}
+          </div>
+        ))}
       </div>
       <Footer />
     </>
   );
 };
 
-const Counter = ({ stock, onAddToCart }) => {
-  const [cantidad, setCantidad] = useState(1);
-
-  const incrementar = () => {
-    if (cantidad < stock) {
-      setCantidad(cantidad + 1);
-    }
-  };
-
-  const decrementar = () => {
-    if (cantidad > 1) {
-      setCantidad(cantidad - 1);
-    }
-  };
-
-  return (
-    <div>
-      <button onClick={decrementar}>-</button>
-      <span>{cantidad}</span>
-      <button onClick={incrementar}>+</button>
-      <button onClick={() => onAddToCart(cantidad)}>Comprar</button>
-    </div>
-  );
-};
-
 export default Tienda;
-

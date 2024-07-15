@@ -5,7 +5,6 @@ const ROUTE = '/api/products'
 export const getProducts = async () => {
   try {
     const response = await HTTP.GET(URL.URL_API + ROUTE + '/');
-    console.log(response)
     if (response.result.productos) {
       return response.result.productos;
     }
@@ -32,7 +31,6 @@ export const getProductById = async (pid) => {
 export const createProduct = async (productData) => {
   try {
     const response = await HTTP.POST(URL.URL_API + ROUTE + '/createProduct', productData);
-    console.log('Respuesta del servidor en createProduct:', response); // Log para verificar datos
     if (response) {
       return response;
     }

@@ -46,7 +46,6 @@ const UsuarioDesarrollador = () => {
             const response = await deleteUserById(userIdToDelete);
             if (response) {
                 setDeleteMessage(`Usuario con ID ${userIdToDelete} eliminado correctamente.`);
-  
                 handleBuscarUsuarios();
             } else {
                 throw new Error(response.message || "Error al eliminar usuario");
@@ -75,7 +74,7 @@ const UsuarioDesarrollador = () => {
                             <li key={usuario._id}>
                                 <p>ID del Usuario: </p>{usuario._id}
                                 <p>Email del Usuario:</p> {usuario.email}
-                                <p>Password del Usuario: </p> {usuario.password} 
+                                <p>Password del Usuario: </p> {usuario.password}
                                 <hr />
                             </li>
                         ))

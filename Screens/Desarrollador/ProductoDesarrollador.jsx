@@ -50,7 +50,6 @@ const ProductoDesarrollador = () => {
     const handleGetProducts = async () => {
         try {
             const productsData = await getProducts();
-            console.log('Datos de productos obtenidos:', productsData); // Log para verificar datos
             if (productsData && Array.isArray(productsData)) {
                 setProducts(productsData);
             } else {
