@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import '../Styles/Global.css'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
+import { useNavigate } from 'react-router-dom';
 import { getProducts } from '../src/fetching/products.fetching';
 import { addToCart } from '../src/fetching/cart.fetching';
 
 const Tienda = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
+
+  const navigate = useNavigate();
 
   const isAuthenticated = !!localStorage.getItem('token');
 
@@ -32,9 +36,9 @@ const Tienda = () => {
       } else {
         alert('No se pudo agregar el producto al carrito');
         throw new Error(response.message || 'Error adding product to cart');
-      }      
+      }
     } catch (error) {
-      console.error('Error adding product to cart:', error);      
+      console.error('Error adding product to cart:', error);
     }
   };
 
@@ -92,6 +96,9 @@ const Tienda = () => {
             )}
           </div>
         ))}
+        {isAuthenticated && (
+          <button onClick={() => navigate('/Carrito')}>Ir al carrito</button> // Ir al carrito
+        )}
       </div>
       <Footer />
     </>

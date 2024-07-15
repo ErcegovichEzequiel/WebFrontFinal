@@ -73,20 +73,7 @@ export const checkout = async () => {
 //         throw { message: error.message }
 //     }
 // }
-// export const addToCart = async (productData) => {
-//      try {
-//          const response = await HTTP.POST(URL.URL_API + ROUTE + '/agregarAlCart', productData);
-//          console.log (response)
-//          if (response.result.producto) {
 
-//              return response.result.productos
-//          }
-//          throw new Error("No se pudo agregar el producto al carrito")
-//      } catch (error) {
-//          console.error("Error en addToCart:", error);
-//          throw { message: error.message };
-//      }
-//  };
 
 //  export const deleteCartItem = async (productId) => {
 //     try {
