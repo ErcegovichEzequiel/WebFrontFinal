@@ -2,7 +2,7 @@ Se intent durante 6 dias usar el GlobalContext, pero la verificacion de token do
 
 
 
-https://front-final-gray.vercel.app/
+https://web-front-final.vercel.app
 
 https://backend-mongodb-smoky.vercel.app
 
