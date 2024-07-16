@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Historia from '../Screens/Historia';
 import Home from '../Screens/Home';
 import Login from '../Screens/Login/Login';
 import Register from '../Screens/Register/Register';
@@ -16,7 +15,6 @@ const RouterList = () => {
     <div>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/Historia' element={<Historia />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/Register' element={<Register />} />
         <Route path='/Carrito' element={<Carrito />} />

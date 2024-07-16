@@ -36,7 +36,6 @@ const Navbar = () => {
                 <div className='navbar'>
                     <h1 className='logo'>HERMES</h1>
                     <Link className='link' to="/">Home</Link>
-                    <Link className='link' to="/Historia">Historia</Link>
                     <Link className='link' to="/Nosotros">Nosotros</Link>
                     <Link className='link' to="/Tienda">Tienda</Link>
                 </div>

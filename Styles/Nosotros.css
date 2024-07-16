@@ -1,0 +1,43 @@
+.nosotrosContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.nosotrosContainer h2{
+    font-size: 150%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1%;
+    border-radius: 8px;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    text-align: center;
+    width: 80%;
+    background-color: rgba(255, 73, 73, 0.824);
+    color: #ffffff;
+}
+
+.nosotrosContainer .nosotrosText{
+    display: flex;
+    background-color: rgba(126, 163, 98, 0.824);
+    border-radius: 8px;
+    width: 80%;
+    padding: 2%;
+    margin-bottom: 3%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.nosotrosImgContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nosotrosImgContainer .imgNosotros{
+    width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
