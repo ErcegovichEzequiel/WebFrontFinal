@@ -35,7 +35,9 @@ const ProductoDesarrollador = () => {
 
     const handleCreateProduct = async () => {
         try {
+            console.log(newProduct);
             const response = await createProduct(newProduct);
+            console.log(response);
             if (response && response._id) {
                 setProducts([...products, response]);
                 setNewProduct({ titulo: '', descripcion: '', precio: 0, stock: 0 });

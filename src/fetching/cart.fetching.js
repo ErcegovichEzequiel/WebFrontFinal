@@ -20,7 +20,6 @@ export const addToCart = async (product_id, cantidad) => {
     try {
         const carrito = { product_id: product_id, cantidad: cantidad }
         const response = await HTTP.POST(URL.URL_API + ROUTE + '/agregarAlCart', carrito)
-        console.log('crack', response)
         if (response) {
             return response
         }
@@ -34,7 +33,6 @@ export const addToCart = async (product_id, cantidad) => {
 export const deleteCartItem = async (product_Id) => {
     try {
         const response = await HTTP.DELETE(URL.URL_API + ROUTE + '/' + product_Id)
-        console.log('crack', response.carrito.items)
         if (response.carrito.items) {
             return response.carrito.items
         }
