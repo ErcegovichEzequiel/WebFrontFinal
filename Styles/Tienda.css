@@ -5,15 +5,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: auto;}
+    height: auto;
+}
 
 .cartaTienda {
-    padding: 1%;
     margin-bottom: 1%;
-    width: 30%;
+    margin-left:0.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .cartaTienda h3 {
@@ -21,6 +24,16 @@
     border-bottom: #000000 solid 1px;
     width: 100%;
     color: #13a3b0;
+    text-align: center;
+}
+.cartaTienda p {
+    font-size: 100%;
+    text-align: center;
+    width: 60%;
+}
+.cartaTienda .descripcion{
+    height: auto;
+  width: 90%;
 }
 
 .botonTienda,
@@ -32,6 +45,7 @@
     color: #ffffff;
     padding: 1%;
     width: 40%;
+    transition: background-color 0.3s ease;
 }
 
 .contadorTienda {
@@ -42,6 +56,8 @@
     width: 120%;
     margin-left: -10%;
     padding: 3%;
+    transition: background-color 0.3s ease;
+
 }
 
 .carrito {
@@ -59,14 +75,53 @@
     transition: background-color 0.3s ease;
     text-align: center;
     border-radius: 5px;
-    background-color: rgb(57, 100, 255);
+    background-color: rgb(0, 0, 0);
     color: #ffffff;
     padding: 1%;
-    width: 10%;
+    width: 40%;
 }
 
 .botonCarrito:hover,
 .botonTienda:hover,
 .botonAddToCart:hover {
-    background-color: #0056b3;
+    background-color: rgb(57, 100, 255);
+    color: #000000;
+}
+
+@media (min-width: 375px) and (max-width: 825px) {
+
+    .cartaTienda {
+        padding: 1%;
+        margin-bottom: 1%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cartaTienda h3 {
+        font-size: 150%;
+        border-bottom: #000000 solid 1px;
+        width: 100%;
+        color: #13a3b0;
+        margin-bottom: 15%;
+    }
+
+    .botonTienda {
+        margin-bottom: 5%;
+        text-align: center;
+        border-radius: 5px;
+        background-color: rgb(0, 0, 0);
+        color: #ffffff;
+        padding: 1%;
+        width: 40%;
+    }
+    .botonCarrito{
+        width: 40%;
+    }
+}
+@media (min-width: 826px) {
+    .botonCarrito{
+        width: 40%;
+    }
 }

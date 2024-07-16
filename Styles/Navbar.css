@@ -50,16 +50,17 @@
     justify-content: flex-end;
     border-bottom: #000000 solid 1px;
     padding: 1%;
-    margin-left: 5%;
 }
 
-.containerIRC .linkIRC {
+.containerIRC .linkIRC, .contadorCarrito {
     text-decoration: none;
     color: #000000;
     margin-left: 3%;
 }
 .contadorCarrito{
     color: rgb(255, 0, 0);
+    font-weight: bold;
+    
 }
 
 @media (min-width: 375px) and (max-width: 825px) {
@@ -69,13 +70,21 @@
 
     .containerIRC {
         justify-content: space-evenly;
+        margin-left: 0;
+        margin-top: 2%;
     }
 
     .navbar {
         flex-direction: column;
     }
 
+    .navbar .logo {
+        margin-bottom: 2%;
+        margin-top: 2%;
+    }
+
     .navbar .link {
         margin-bottom: 2%;
+        font-size: 90%;
     }
 }

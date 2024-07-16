@@ -52,7 +52,7 @@ const Tienda = () => {
         {products.map(product => (
           <div className='cartaTienda' key={product._id}>
             <h3>{product.titulo}</h3>
-            <p>{product.descripcion}</p>
+            <p className='descripcion'> {product.descripcion}</p>
             <p>Precio: ${product.precio}</p>
             <p>Stock: {product.stock}</p>
             {isAuthenticated && (
@@ -98,10 +98,10 @@ const Tienda = () => {
         ))}
       </div>
       <div className='carrito'>
-          {isAuthenticated && (
-            <button className='botonCarrito' onClick={() => navigate('/Carrito')}>Ir al carrito</button>
-          )}
-        </div>
+        {isAuthenticated && (
+          <button className='botonCarrito' onClick={() => navigate('/Carrito')}>Ir al carrito</button>
+        )}
+      </div>
       <Footer />
     </>
   );

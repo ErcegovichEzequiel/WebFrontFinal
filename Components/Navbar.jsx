@@ -31,7 +31,7 @@ const Navbar = () => {
                     {isAuthenticated && <Link className='linkIRC' to="/Desarrollador">Opciones de Desarrollador</Link>}
                     <Link className='linkIRC' to="/Login">Inicia sesión</Link>
                     <Link className='linkIRC' to="/Register">Registrate</Link>
-                    <Link className='linkIRC' to="/Carrito"> {contadorItemsCarrito > 0 && <span className='contadorCarrito'>{contadorItemsCarrito}</span>}<FaShoppingCart /></Link>
+                    <Link className='linkIRC' to="/Carrito"> {contadorItemsCarrito > 0 && <span className='contadorCarrito'>{contadorItemsCarrito}</span>}<FaShoppingCart className='carrito' /></Link>
                 </div>
                 <div className='navbar'>
                     <h1 className='logo'>HERMES</h1>
