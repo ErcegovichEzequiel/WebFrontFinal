@@ -67,7 +67,7 @@ const UsuarioDesarrollador = () => {
             <h1>Panel de Administración de Usuarios</h1>
             <div className='cartaDesarrollador'>
                 <h3>Usuarios</h3>
-                <button onClick={handleBuscarUsuarios}>Buscar</button>
+                <button className='botonDesarrollador' onClick={handleBuscarUsuarios}>Buscar</button>
                 <ul>
                     {usuarios && usuarios.length > 0 ? (
                         usuarios.map((usuario) => (
@@ -88,7 +88,7 @@ const UsuarioDesarrollador = () => {
                 <h3>Eliminar Usuario</h3>
                 <label htmlFor="ID">ID</label>
                 <input type="text" value={userIdToDelete} onChange={handleChangeUserIdToDelete} placeholder="ID del usuario a eliminar" />
-                <button onClick={handleEliminarUsuario}>Eliminar</button>
+                <button className='botonDesarrollador' onClick={handleEliminarUsuario}>Eliminar</button>
                 {deleteMessage && <p>{deleteMessage}</p>}
             </div>
 
@@ -100,7 +100,7 @@ const UsuarioDesarrollador = () => {
                 <input type="email" placeholder='Nuevo email del usuario' onChange={(e) => setUserDataToUpdate({ ...userDataToUpdate, email: e.target.value })} />
                 <label htmlFor="password">Password</label>
                 <input type="password" placeholder='Nueva password del usuario' onChange={(e) => setUserDataToUpdate({ ...userDataToUpdate, password: e.target.value })} />
-                <button onClick={handleActualizarUsuario}>Editar</button>
+                <button className='botonDesarrollador' onClick={handleActualizarUsuario}>Editar</button>
                 {updateMessage && <p>{updateMessage}</p>}
             </div>
 

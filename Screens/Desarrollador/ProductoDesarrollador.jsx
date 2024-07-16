@@ -86,7 +86,7 @@ const ProductoDesarrollador = () => {
 
                 <div className='cartaDesarrollador'>
                     <h3>Productos</h3>
-                    <button onClick={handleGetProducts}>Buscar</button>
+                    <button className='botonDesarrollador' onClick={handleGetProducts}>Buscar</button>
                     <ul>
                         {products && products.length > 0 ? (
                             products.map((producto) => (
@@ -131,7 +131,7 @@ const ProductoDesarrollador = () => {
                         value={newProduct.stock}
                         onChange={(e) => setNewProduct({ ...newProduct, stock: parseInt(e.target.value, 10) })}
                     />
-                    <button onClick={handleCreateProduct}>Añadir</button>
+                    <button className='botonDesarrollador' onClick={handleCreateProduct}>Añadir</button>
                 </div>
 
                 <div className='cartaDesarrollador'>
@@ -171,14 +171,14 @@ const ProductoDesarrollador = () => {
                         value={editProduct.stock}
                         onChange={(e) => setEditProduct({ ...editProduct, stock: parseInt(e.target.value, 10) })}
                     />
-                    <button onClick={handleEditProduct}>Editar</button>
+                    <button className='botonDesarrollador' onClick={handleEditProduct}>Editar</button>
                 </div>
 
                 <div className='cartaDesarrollador'>
                     <h3>Eliminar un producto</h3>
                     <label htmlFor="pid">ID</label>
                     <input type="text" value={eliminarProducto} onChange={handleChangeProductPidDelete} />
-                    <button onClick={handleDeleteProduct}>Eliminar</button>
+                    <button className='botonDesarrollador' onClick={handleDeleteProduct}>Eliminar</button>
                 </div>
 
 

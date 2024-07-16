@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../Styles/Global.css'
+import '../Styles/Tienda.css'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +22,7 @@ const Tienda = () => {
         console.error('Error fetching products:', error);
       }
     };
-    
+
     fetchProducts();
   }, []);
   const handleAddToCart = async (productId, quantity) => {
@@ -42,59 +43,65 @@ const Tienda = () => {
     setCart(prevCart => ({
       ...prevCart,
       [productId]: quantity
-    })); 
+    }));
   };
   return (
     <>
       <Navbar />
-      <div>
+      <div className='containerTienda'>
         {products.map(product => (
-          <div key={product._id}>
+          <div className='cartaTienda' key={product._id}>
             <h3>{product.titulo}</h3>
             <p>{product.descripcion}</p>
             <p>Precio: ${product.precio}</p>
             <p>Stock: {product.stock}</p>
             {isAuthenticated && (
-              <>
-                <button
-                  onClick={() =>
-                    handleQuantityChange(
-                      product._id,
-                      (cart[product._id] || 0) - 1
-                    )
-                  }
-                  disabled={cart[product._id] <= 0}
-                >
-                  -
-                </button>
-                <span>{cart[product._id] || 0}</span>
-                <button
-                  onClick={() =>
-                    handleQuantityChange(
-                      product._id,
-                      (cart[product._id] || 0) + 1
-                    )
-                  }
-                  disabled={cart[product._id] >= product.stock}
-                >
-                  +
-                </button>
-                <button
-                  onClick={() =>
-                    handleAddToCart(product._id, cart[product._id] || 1)
-                  }
-                  disabled={cart[product._id] <= 0}
-                >
-                  Agregar al carrito
-                </button>
-              </>
+              <div>
+                <div>
+                  <button className='botonTienda'
+                    onClick={() =>
+                      handleQuantityChange(
+                        product._id,
+                        (cart[product._id] || 0) - 1
+                      )
+                    }
+                    disabled={cart[product._id] <= 0}
+                  >
+                    -
+                  </button>
+                  <span className='contadorTienda'>{cart[product._id] || 0}</span>
+                  <button className='botonTienda'
+                    onClick={() =>
+                      handleQuantityChange(
+                        product._id,
+                        (cart[product._id] || 0) + 1
+                      )
+                    }
+                    disabled={cart[product._id] >= product.stock}
+                  >
+                    +
+                  </button>
+                </div>
+                <div>
+                  <button className='botonAddToCart'
+                    onClick={() =>
+                      handleAddToCart(product._id, cart[product._id] || 1)
+                    }
+                    disabled={cart[product._id] <= 0}
+                  >
+                    Agregar al carrito
+                  </button>
+                </div>
+              </div>
             )}
           </div>
         ))}
-        {isAuthenticated && (
-          <button onClick={() => navigate('/Carrito')}>Ir al carrito</button>
-        )}
       </div>
+      <div className='carrito'>
+          {isAuthenticated && (
+            <button className='botonCarrito' onClick={() => navigate('/Carrito')}>Ir al carrito</button>
+          )}
+        </div>
       <Footer />
     </>
   );

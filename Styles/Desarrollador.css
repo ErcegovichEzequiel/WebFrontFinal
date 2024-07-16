@@ -1,85 +1,85 @@
 .containerDesarrollador {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 5%;
-  }
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 5%;
+}
 
-  .containerDesarrollador h1 {
-    text-align: center;
-    margin-bottom: 1%;
-  }
-  
-  .cartaDesarrollador {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 1%;
-    margin-bottom: 1%;
-    width: 100%;
-  }
-  
-  .cartaDesarrollador h3 {
-    font-size: 150%;
-    margin-bottom: 1%;
-  }
-  
-  .cartaDesarrollador input[type="text"],
-  .cartaDesarrollador input[type="number"],
-  .cartaDesarrollador input[type="email"],
-  .cartaDesarrollador input[type="password"] {
-    width: 80%;
-    padding: 1%;
-    margin-bottom: 1%;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  .cartaDesarrollador textarea {
-    width: 90%;
-    padding: 1%;
-    margin-bottom: 1%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: vertical; 
-  }
-  
-  .cartaDesarrollador button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 1% 2%;
-    font-size: 100%;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-bottom: 1%;
-    width: 15%;
-  }
-  
-  .cartaDesarrollador button:hover {
-    background-color: #0056b3;
-  }
-  
-  .cartaDesarrollador p {
-    margin-bottom: 1%;
-  }
-  
-  .cartaDesarrollador ul {
-    list-style: none;
-    padding: 0;  
-    width: 80%; 
-  }
-  
-  .cartaDesarrollador li {
-    margin-bottom: 1%;
-    background-color: #d1d1d1;
-    border-radius: 5px;
-    padding: 1%;
-    width: 100%;
-  }
+.containerDesarrollador h1 {
+  text-align: center;
+  margin-bottom: 1%;
+}
 
-  
+.cartaDesarrollador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1%;
+  margin-bottom: 1%;
+  width: 100%;
+}
 
+.cartaDesarrollador h3 {
+  font-size: 150%;
+  margin-bottom: 1%;
+}
+
+.cartaDesarrollador input[type="text"],
+.cartaDesarrollador input[type="number"],
+.cartaDesarrollador input[type="email"],
+.cartaDesarrollador input[type="password"] {
+  width: 80%;
+  padding: 1%;
+  margin-bottom: 1%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.cartaDesarrollador textarea {
+  width: 90%;
+  padding: 1%;
+  margin-bottom: 1%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.cartaDesarrollador .botonDesarrollador {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 1% 2%;
+  font-size: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 1%;
+  width: 15%;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+}
+
+.cartaDesarrollador .botonDesarrollador:hover {
+  background-color: #0056b3;
+}
+
+.cartaDesarrollador p {
+  margin-bottom: 1%;
+}
+
+.cartaDesarrollador ul {
+  list-style: none;
+  padding: 0;
+  width: 80%;
+}
+
+.cartaDesarrollador li {
+  margin-bottom: 1%;
+  background-color: #d1d1d1;
+  border-radius: 5px;
+  padding: 1%;
+  width: 100%;
+}
 
