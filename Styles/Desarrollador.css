@@ -2,6 +2,10 @@
   max-width: 80%;
   margin: 0 auto;
   padding: 5%;
+  margin-bottom: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .containerDesarrollador h1 {
@@ -83,3 +87,13 @@
   width: 100%;
 }
 
+@media (min-width: 375px) and (max-width: 825px) {
+  .containerDesarrollador {
+    max-width: 90%;
+  }
+
+  .cartaDesarrollador {
+    width: 100%;
+    margin-bottom: 5%;
+  }
+}

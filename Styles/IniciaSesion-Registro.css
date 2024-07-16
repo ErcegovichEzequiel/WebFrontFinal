@@ -1,113 +1,141 @@
 .containerInciarSecionCompleto {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: auto;
-    margin-top: 5%;
     margin-bottom: 5%;
 }
 
-.containerInciarSecionCompleto .imgIS {
-    width: 60%;
-    height: auto;
-    border-radius: 8px;
-    margin-left: -10%;
-}
-
-.containerInciarSecionCompleto .title {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 300%;
-    color: rgb(255, 255, 255);
-    position: absolute;
-    z-index: 1;
-    margin-left: 5%;
-    margin-top: -15%;
-    background-color: rgba(0, 0, 0, 0.824);
-    padding: 1%;
-    border-radius: 8px;
-    width: 29%;
-    text-align: center;
-}
-
-.containerForm {
+.containerInciarSecionCompleto .containerBanner {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-
+    margin-top: 3%;
 }
 
-.containerFormIS {
+.containerInciarSecionCompleto .containerBanner .imgIS {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.containerInciarSecionCompleto .containerForm {
     display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 35%;
-  margin-bottom: 5%;
-  width: 118%;
-  padding: 10%;
-  background-color: rgb(255, 255, 255);
-  border-radius: 8px;
-  border: 1px solid rgb(0, 0, 0);
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 150%;
-  font-weight: 400;
-  color: rgb(0, 0, 0);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  margin-left: 25%;
-}
-
-.inputIS {
-    width: 80%;
-    height: 30px;
-    margin: 6% 0 1% 0;
-    border-radius: 8px;
-    border: 1px solid rgb(0, 0, 0);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 100%;
-    font-weight: 400;
-    color: rgb(0, 0, 0);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-}
-
-.btnIS {
-    width: 46%;
-    height: auto;
-    margin: 6% 0 1% 0;
-    border-radius: 8px;
-    border: 1px solid rgb(0, 0, 0);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 100%;
-    font-weight: 400;
-    color: rgb(0, 0, 0);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-    background-color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-
-
-/* Registrate */
-
-.containerInciarSecionCompleto .imgRegistro {
-    width: 40%;
-    height: auto;
-    border-radius: 8px;
-    margin-left: -10%;
-    margin-top: 5%;
-}
-.containerInciarSecionCompleto .titleRegistro {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 300%;
-    color: rgb(255, 255, 255);
-    position: absolute;
-    z-index: 1;
-    margin-left: 5%;
-    margin-top: -30%;
-    background-color: rgba(0, 0, 0, 0.824);
     padding: 1%;
     border-radius: 8px;
-    width: 29%;
+    width: 70%;
+    margin-bottom: 3%;
+}
+
+.containerInciarSecionCompleto .containerForm .title {
+    font-size: 150%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1%;
+    border-radius: 8px;
+    margin-bottom: 3%;
+    margin-top: 3%;
     text-align: center;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.824);
+    color: #ffffff;
+}
+
+.containerInciarSecionCompleto .containerForm .containerFormIS {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+    background-color: rgba(255, 58, 58, 0.824);
+    padding: 2%;
+    border-radius: 8px;
+    margin-bottom: 3%;
+}
+
+.containerInciarSecionCompleto .containerForm .containerFormIS .containerInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 3%;
+    width: 80%;
+    justify-content: flex-end;
+
+}
+
+.containerInciarSecionCompleto .containerForm .containerFormIS .containerInput .inputIS {
+    font-size: 110%;
+    text-align: justify;
+    margin-left: 1%;
+    width: 64%;
+    padding: 0.5%;
+    border: 1px solid black;
+}
+
+.containerInciarSecionCompleto .containerForm .containerFormIS .btnIS {
+    padding: 0.5%;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.824);
+}
+
+.containerInciarSecionCompleto .containerForm .containerFormIS .btnIS:hover {
+    background-color: rgba(164, 164, 164, 0.824);
+}
+
+.containerInciarSecionCompleto .containerText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3%;
+    width: 70%;
+   line-height: 2; 
+}
+
+.containerInciarSecionCompleto .containerText p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 105%;
+    width: 90%;
+}
+
+@media (min-width: 375px) and (max-width: 825px) {
+    .containerInciarSecionCompleto .containerForm {
+        width: 90%;
+        margin-bottom: 5%;
+        margin-top: 10%;
+    }
+
+    .containerInciarSecionCompleto .containerForm .containerFormIS {
+        width: 95%;
+    }
+
+    .containerInciarSecionCompleto .containerBanner .imgIS {
+        width: 90%;
+    }
+
+    .containerInciarSecionCompleto .containerForm .title {
+        font-size: 120%;
+    }
+
+    .containerInciarSecionCompleto .containerForm .containerFormIS .containerInput {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+    }
+
+    .containerInciarSecionCompleto .containerForm .containerFormIS .containerInput label {
+        font-size: 100%;
+    }
+
+    .containerInciarSecionCompleto .containerForm .containerFormIS .containerInput .inputIS {
+        font-size: 100%;
+    }
+
 }

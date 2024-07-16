@@ -29,18 +29,35 @@ const Registrate = () => {
     <>
       <Navbar />
       <div className='containerInciarSecionCompleto'>
-        <img className="imgRegistro" src="./img/vaso-whisky.jpg" alt="vaso-whisky" />
+        
+      <div className='containerBanner'>
+
+        <img className="imgIS" src="./img/vaso-whisky.jpg" alt="vaso-whisky" />
+        
+        </div>
+
         <div className='containerForm'>
-          <h3 className='titleRegistro'>Registrate</h3>
+
+          <h3 className='title'>Registrate</h3>
+          
           <form action="" className='containerFormIS' onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="email">Email</label>
-              <input type="email" id="email" name="email" placeholder='H&S@gmail.com' className='inputIS'  />
+            
+            <div className='containerInput'>
+
+              <label htmlFor="email">Ingrese su email:</label>
+
+              <input type="email" id="email" name="email" placeholder='hermes@hermes.com' className='inputIS'  />
+
             </div>
-            <div>
-              <label htmlFor="password">Contraseña</label>
+
+            <div className='containerInput'>
+
+              <label htmlFor="password">Ingrese su contraseña:</label>
+
               <input type="password" id="password" name="password" className="inputIS" placeholder="**********"  />
+
             </div>
+
             {errorText
               &&
               <span style={{ color: 'red' }}>
@@ -51,7 +68,9 @@ const Registrate = () => {
             <button type="submit" className='btnIS'>Registrate</button>
 
           </form>
+
         </div>
+        
       </div>
       <Footer />
     </>
