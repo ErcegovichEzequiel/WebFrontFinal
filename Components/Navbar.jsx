@@ -4,11 +4,12 @@ import '../Styles/Navbar.css'
 import '../Styles/Global.css'
 
 const Navbar = () => {
+    const isAuthenticated = !!localStorage.getItem('token');
     return (
         <>
             <div className='containerNavbar'>
                 <div className='containerIRC'>
-                    <Link className='linkIRC' to="/Desarrollador">Opciones de Desarrollador</Link>
+                    {isAuthenticated && <Link className='linkIRC' to="/Desarrollador">Opciones de Desarrollador</Link>                    }
                     <Link className='linkIRC' to="/Login">Inicia sesión</Link>
                     <Link className='linkIRC' to="/Register">Registrate</Link>
                     <Link className='linkIRC' to="/Carrito">Carrito</Link>

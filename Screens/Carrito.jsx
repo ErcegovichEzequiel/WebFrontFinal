@@ -9,6 +9,7 @@ const Carrito = () => {
     const navigate = useNavigate();
     const [totalProductos, setTotalProductos] = useState([]);
     const [processingOrder, setProcessingOrder] = useState(false);
+    const isAuthenticated = !!localStorage.getItem('token');
 
     useEffect(() => {
         const fetchCartItems = async () => {
@@ -20,7 +21,8 @@ const Carrito = () => {
                 console.error('Error fetching cart items:', error);
             }
         };
-        fetchCartItems();
+        {isAuthenticated && fetchCartItems()}
+        
     }, []);
 
     const handleDeleteItem = async (productId) => {
@@ -71,29 +73,31 @@ const Carrito = () => {
                 setProcessingOrder(false);
             }
         }, 5000);
-        }
-
+    }
 
     return (
         <>
             <Navbar />
             <div>
                 <h1>Carrito</h1>
-                <div>
-                    {cartItems.length === 0 && <p>No hay productos en el carrito</p>}
-                    {cartItems.map(item => (
-                        <div key={item.product_id._id}>
-                            <h2>{item.product_id.titulo}</h2>
-                            <p>Precio: ${item.product_id.precio}</p>
-                            <p>Cantidad: {item.cantidad}</p>
-                            <button onClick={() => handleDeleteItem(item.product_id._id)}>Eliminar Producto</button>
-                        </div>
-                    ))}
-                </div>
-                <p>Total: ${cartItems.reduce((total, item) => total + item.product_id.precio * item.cantidad, 0)}</p>
-                {processingOrder && <p>Procesando orden...</p>}
-                <button onClick={handleClearCart}>Limpiar Carrito</button>
-                <button onClick={handleCheckout}>Realizar Compra</button>
+                {!isAuthenticated && <p>Inicia sesión para ver el carrito</p>}
+                {isAuthenticated && (<>
+                    <div>
+                        {cartItems.length === 0 && <p>No hay productos en el carrito</p>}
+                        {cartItems.map(item => (
+                            <div key={item.product_id._id}>
+                                <h2>{item.product_id.titulo}</h2>
+                                <p>Precio: ${item.product_id.precio}</p>
+                                <p>Cantidad: {item.cantidad}</p>
+                                <button onClick={() => handleDeleteItem(item.product_id._id)}>Eliminar Producto</button>
+                            </div>
+                        ))}
+                    </div>
+                    <p>Total: ${cartItems.reduce((total, item) => total + item.product_id.precio * item.cantidad, 0)}</p>
+                    {processingOrder && <p>Procesando orden...</p>}
+                    <button onClick={handleClearCart}>Limpiar Carrito</button>
+                    <button onClick={handleCheckout}>Realizar Compra</button>
+                </>)}
             </div>
             <Footer />
         </>

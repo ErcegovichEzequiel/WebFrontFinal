@@ -9,9 +9,7 @@ import { addToCart } from '../src/fetching/cart.fetching';
 const Tienda = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
-
   const navigate = useNavigate();
-
   const isAuthenticated = !!localStorage.getItem('token');
 
   useEffect(() => {
@@ -23,9 +21,9 @@ const Tienda = () => {
         console.error('Error fetching products:', error);
       }
     };
+    
     fetchProducts();
   }, []);
-
   const handleAddToCart = async (productId, quantity) => {
     try {
       const response = await addToCart(productId, quantity);
@@ -40,14 +38,12 @@ const Tienda = () => {
       console.error('Error adding product to cart:', error);
     }
   };
-
   const handleQuantityChange = (productId, quantity) => {
     setCart(prevCart => ({
       ...prevCart,
       [productId]: quantity
     })); 
   };
-
   return (
     <>
       <Navbar />
@@ -96,7 +92,7 @@ const Tienda = () => {
           </div>
         ))}
         {isAuthenticated && (
-          <button onClick={() => navigate('/Carrito')}>Ir al carrito</button> // Ir al carrito
+          <button onClick={() => navigate('/Carrito')}>Ir al carrito</button>
         )}
       </div>
       <Footer />
