@@ -1,7 +1,10 @@
 .footer {
-    background-color: black;
-    font-family: "Merriweather", serif;
-    padding: 1%;
+    background-color: rgb(50, 50, 50);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 100%;
 }
 
 .footer h3 {
@@ -10,19 +13,27 @@
 }
 
 .boxRedes {
+    width: 60%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .iconRedes {
-    width: 3%;
+    width: 5%;
+    height: auto;
+    cursor: pointer;
+    margin-bottom: 2%;
 }
 
-
-
-/* Copi */
 .boxCopi {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     background-color: rgb(74, 74, 74);
+    height: auto;
+    padding: 0.5%;
 }
 
 .copi {

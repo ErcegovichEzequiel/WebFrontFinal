@@ -15,7 +15,7 @@ const Navbar = () => {
                     <Link className='linkIRC' to="/Carrito">Carrito</Link>
                 </div>
                 <div className='navbar'>
-                    <h1 className='logo'>H&S Whisky</h1>
+                    <h1 className='logo'>HERMES</h1>
                     <Link className='link' to="/">Home</Link>
                     <Link className='link' to="/Historia">Historia</Link>
                     <Link className='link' to="/Nosotros">Nosotros</Link>
