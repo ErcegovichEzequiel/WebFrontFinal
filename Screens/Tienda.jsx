@@ -48,6 +48,9 @@ const Tienda = () => {
   return (
     <>
       <Navbar />
+      <div className='tiendaBienvenida'>
+        <h3>Bienvenido a nuestra tienda, donde celebramos la pasión por el whisky en cada sorbo.</h3>
+      </div>
       <div className='containerTienda'>
         {products.map(product => (
           <div className='cartaTienda' key={product._id}>

@@ -8,15 +8,36 @@
     height: auto;
 }
 
+.tiendaBienvenida {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.tiendaBienvenida h3 {
+    font-size: 150%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1%;
+    border-radius: 8px;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    text-align: center;
+    width: 80%;
+    background-color: rgba(255, 73, 73, 0.824);
+    color: #ffffff;
+}
+
 .cartaTienda {
     margin-bottom: 1%;
-    margin-left:0.5%;
+    margin-left: 0.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    padding: 1%;
 }
 
 .cartaTienda h3 {
@@ -26,14 +47,16 @@
     color: #13a3b0;
     text-align: center;
 }
+
 .cartaTienda p {
     font-size: 100%;
     text-align: center;
     width: 60%;
 }
-.cartaTienda .descripcion{
+
+.cartaTienda .descripcion {
     height: auto;
-  width: 90%;
+    width: 90%;
 }
 
 .botonTienda,
@@ -46,6 +69,7 @@
     padding: 1%;
     width: 40%;
     transition: background-color 0.3s ease;
+    margin-bottom: 2%;
 }
 
 .contadorTienda {
@@ -57,7 +81,7 @@
     margin-left: -10%;
     padding: 3%;
     transition: background-color 0.3s ease;
-
+    margin-bottom: 2%;
 }
 
 .carrito {
@@ -116,12 +140,14 @@
         padding: 1%;
         width: 40%;
     }
-    .botonCarrito{
+
+    .botonCarrito {
         width: 40%;
     }
 }
+
 @media (min-width: 826px) {
-    .botonCarrito{
+    .botonCarrito {
         width: 40%;
     }
 }
